@@ -18,7 +18,7 @@ If for some reason your Internet connection crashes from time to time (buggy ISP
 - If the router is offline, restart all network interface (wan, lan and wifi) up to 5 time (with a 45sec wait in between).
 - If restarting interface is not enough, reboot the router (with 3min wait to avoid boot loop).
 - Event log (with auto-purge to avoid saturating router storage).
-- Automatic installation script.
+- Automatic installation script with prompts for the install folder, daemon name, DNS servers, and retry timings.
   
 
 ### Update compare to original and other forks:
@@ -32,7 +32,7 @@ If for some reason your Internet connection crashes from time to time (buggy ISP
 
 To install OWKA, run the following command and follow the instructions:
 
-	wget --no-check-certificate https://raw.githubusercontent.com/Norde/openwrt-wan-keep-alive/master/install_owka.sh -O install_owka.sh && chmod +x install_owka.sh && ./install_owka.sh
+	wget --no-check-certificate https://raw.githubusercontent.com/elenaferr0/openwrt-wan-keep-alive/master/install_owka.sh -O install_owka.sh && chmod +x install_owka.sh && ./install_owka.sh
 
 
 
@@ -47,5 +47,5 @@ Daemon:
    
 ## Future developments
 
-- Enable customization of parameters via the installation script (installation folder, daemon name, dns, delay between restart, number of trials...)
+- Add the option to select between reseting one specific interface or all network.
 - Add the option to select between reseting one specific interface or all network.
