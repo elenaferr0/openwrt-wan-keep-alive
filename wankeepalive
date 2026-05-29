@@ -6,12 +6,19 @@ START=99
 STOP=15
 PIDFILE=/var/pids/wan-keep-alive.pid
 PIDDIR=/var/pids
-BINFILE=/usr/openwrt-wan-keep-alive/wan-keep-alive.sh
+CONFIG_FILE=/usr/openwrt-wan-keep-alive/owka.conf
+
+if [ -f "$CONFIG_FILE" ]; then
+	. "$CONFIG_FILE"
+fi
+
+# BINFILE is taken from config if present, else default install path
+BINFILE="${OWKA_INSTALL_DIR:-/usr/openwrt-wan-keep-alive}/wan-keep-alive.sh"
 
 start() {
 	[ -d $PIDDIR ] || mkdir -p $PIDDIR
 	[ -f $PIDFILE ] && exit 1
-	$BINFILE 2>&1 >/dev/null &
+	"$BINFILE" 2>&1 >/dev/null &
 	echo $! > $PIDFILE
 }
 
